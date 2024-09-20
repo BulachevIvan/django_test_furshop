@@ -6,6 +6,7 @@ class CartsService:
 
     def __init__(self, **data):
         self.data = data
+
     def get_cart(self):
         queryset = CartItem.objects.filter(user_id=self.data.get('user_id'))
         return queryset

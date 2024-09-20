@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import generics
+from rest_framework import generics, status
 
 from order.serializers import OrderRequestSerializer, OrderSerializer
 from order.services import OrderService
@@ -19,5 +19,5 @@ class OrderView(generics.GenericAPIView):
         service = OrderService(**serializer.validated_data)
         data = service.create_order()
         result = OrderSerializer(data, many=True).data
-        return Response(result)
+        return Response(result, status=status.HTTP_201_CREATED)
 
