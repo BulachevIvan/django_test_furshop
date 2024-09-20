@@ -1,6 +1,7 @@
 import datetime
 
 from cart.models import CartItem
+from django.conf import settings
 from order.models import Order, OrderItem
 from dadata import Dadata
 
@@ -38,7 +39,7 @@ class OrderService:
         OrderItem.objects.bulk_create(order_items, batch_size=1000)
 
     def get_address_suggestions(self, query):
-        token = "31623cc650936fc3d21ed3976ee7213a7ce0692a"
+        token = settings.TOKEN
         dadata = Dadata(token)
         result = dadata.suggest("address", query)
         return result
