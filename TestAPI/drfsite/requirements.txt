@@ -3,6 +3,11 @@ coreapi==2.3.3
 coreschema==0.0.4
 Django==3.2.13
 djangorestframework==3.14.0
+django-environ==0.4.5
+dadata
+Pillow
+psycopg2-binary
+whitenoise
 drf-yasg==1.21.5
 httpie==3.2.1
 Jinja2==3.1.2

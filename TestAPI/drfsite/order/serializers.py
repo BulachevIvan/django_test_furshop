@@ -10,3 +10,4 @@ class OrderSerializer(serializers.ModelSerializer):
 
 class OrderRequestSerializer(serializers.Serializer):
     user_id = serializers.IntegerField()
+    client_adress = serializers.CharField()

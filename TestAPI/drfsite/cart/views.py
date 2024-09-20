@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from drf_yasg import openapi
 from drf_yasg.utils import swagger_auto_schema
-from rest_framework import generics
+from rest_framework import generics, status
 from rest_framework.response import Response
 
 from cart.serializers import CartItemSerializer, CartItemRequestSerializer
@@ -36,7 +36,7 @@ class CartDetailView(generics.GenericAPIView):
         service = CartsService(**serializer.validated_data)
         data = service.post_item()
         result = CartItemSerializer(data, many=True).data
-        return Response(result)
+        return Response(result, status=status.HTTP_201_CREATED)
 
     @swagger_auto_schema(
         operation_summary="Изменение товара",
